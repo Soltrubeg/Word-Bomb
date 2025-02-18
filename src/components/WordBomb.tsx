@@ -35,7 +35,7 @@ function WordBomb ({ words }) {
   const [letters, setLetters] = useState(generateLetters());
 
   useEffect(() => {
-    inputRef.current?.focus(); // Focus the input field on mount and updates
+    inputRef.current?.focus();
   });
 
   useEffect(() => {
@@ -43,9 +43,11 @@ function WordBomb ({ words }) {
     if(progress<=0){
       setProgress(100)
       setLives(lives-1)
+      if(lives<=1){
+        setGameOver(true)
+      }
     }
 
-    // Set a timer that decreases the progress by 1 every second
     const progressInterval = setInterval(() => {
       setProgress((prevProgress) => {
         if (prevProgress <= 0) {
@@ -112,7 +114,7 @@ for (let letter of input.split("")) {
             type="text"
             value={input}
             ref={inputRef}
-            className="w-full p-2 border rounded-lg text-xl"
+            className="w-full p-2 border rounded-lg text-xl text-white"
             disabled={gameOver}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={checkInput}
@@ -140,7 +142,7 @@ for (let letter of input.split("")) {
         {/* Game Over Message */}
         {gameOver && (
           <div className="text-red-500 text-2xl font-bold">
-            Game Over! Final Score: {score}
+            Game Over! Finaler Score: {score}
           </div>
         )}
       </div>
