@@ -1,0 +1,15 @@
+@import "tailwindcss";
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+@font-face {
+    font-family: Rebellion;
+    src: url('fonts/RebellionSquad-ZpprZ.ttf');
+  }
+
+body {
+    background-color: theme(colors.slate.700);
+}
+
+#title {
+    font-family:Rebellion;
+}
