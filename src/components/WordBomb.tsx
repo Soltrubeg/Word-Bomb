@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import ProgressBar from 'react-bootstrap/ProgressBar';
+import ProgressBar from 'react-bootstrap/cjs/ProgressBar';
 
 function WordBomb ({ words }) {
   const [score, setScore] = useState(0);
