@@ -10,7 +10,7 @@ import node from '@astrojs/node';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://soltrubeg.github.io',
-  base: 'WordBomb',
+  base: 'Word-Bomb',
   integrations: [react()],
 
   vite: {
