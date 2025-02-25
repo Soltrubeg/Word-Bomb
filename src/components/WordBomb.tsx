@@ -120,7 +120,7 @@ for (let letter of input.split("")) {
             ref={inputRef}
             className="w-full p-2 border rounded-lg text-xl text-white"
             disabled={gameOver}
-            onChange={(e) => setInput(e.target.value)}
+            onChange={(e) => setInput(e.target.value.replaceAll(' ',''))}
             onKeyDown={checkInput}
           />
         </div>
