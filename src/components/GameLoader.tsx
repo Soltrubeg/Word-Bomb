@@ -5,13 +5,12 @@ function GameLoader() {
   const [words, setWords] = useState<string[] | null>(null);
 
   useEffect(() => {
-    fetch("/Word-Bomb/words.txt")
+    fetch("https://soltrubeg.github.io/Word-Bomb/words.txt")
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
         return res.text();
       })
       .then((data) => {
-        console.log("Fetched words:", data); // Debugging
         setWords(data.split("\n").map(word => word.trim()));
       })
       .catch((err) => console.error("Fehler beim Laden der Wörter:", err));
