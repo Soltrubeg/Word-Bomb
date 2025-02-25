@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import ProgressBar from 'react-bootstrap/cjs/ProgressBar';
+
 
 function WordBomb ({ words }) {
   const [score, setScore] = useState(0);
@@ -8,7 +8,7 @@ function WordBomb ({ words }) {
   const [progress, setProgress] = useState(100);
   const [input, setInput] = useState("");
   const inputRef = useRef(null);
-  var usedWords = []
+  const [usedWords, setUsedWords] = useState([]);
   var reqLetters = "abcdefghijklmnopqrstuvwxz".split("")
   const [usedLetters, setUsedLetters] = useState(reqLetters.reduce((obj, key) => {
     obj[key] = 0;
@@ -41,10 +41,13 @@ function WordBomb ({ words }) {
   useEffect(() => {
     if (gameOver) return;
     if(progress<=0){
-      setProgress(100)
+      new Audio("/Word-Bomb/sounds/Explosion.wav").play()
       setLives(lives-1)
       if(lives<=1){
         setGameOver(true)
+      } else {
+        setLetters(generateLetters())
+        setProgress(100)
       }
     }
 
@@ -78,8 +81,9 @@ function WordBomb ({ words }) {
         if(input.toLowerCase().includes(letters.toLowerCase())) {
           if(lowerWords.includes(input.toLowerCase())){
           if(!usedWords.includes(input.toLowerCase())){
-          usedWords.push(input.toLowerCase())
+          setUsedWords(prevUsedWords => [...prevUsedWords, input.toLowerCase()]);
           setScore(score + (Math.round(progress/10*input.length)))
+          new Audio("/Word-Bomb/sounds/Confirm.wav").play()
           setProgress(100)
           setLetters(generateLetters())
 for (let letter of input.split("")) {
@@ -99,7 +103,7 @@ for (let letter of input.split("")) {
     
         {/* Progress Bar */}
         <div className="w-full max-w-xs h-5 mb-4">
-          <ProgressBar striped variant="danger" now={progress} label={`${progress / 10}s`} />
+          <progress value={progress} max="100" className="w-full [&::-webkit-progress-bar]:rounded-lg [&::-webkit-progress-value]:rounded-lg [&::-webkit-progress-bar]:bg-slate-400 [&::-webkit-progress-value]:bg-green-500 [&::-moz-progress-bar]:bg-green-500"/>
         </div>
     
         {/* Display Letters */}
@@ -122,8 +126,8 @@ for (let letter of input.split("")) {
         </div>
     
         {/* Lives and Score */}
-        <div className="flex justify-center space-x-8 mb-4">
-          <div className="text-xl text-white">Lives: {lives}</div>
+        <div className="flex justify-center space-x-12 mb-4">
+          <div className="text-xl text-white">Leben: {lives}</div>
           <div className="text-xl text-white">Score: {score}</div>
         </div>
     
@@ -140,11 +144,18 @@ for (let letter of input.split("")) {
         </div>
     
         {/* Game Over Message */}
-        {gameOver && (
-          <div className="text-red-500 text-2xl font-bold">
-            Game Over! Finaler Score: {score}
-          </div>
-        )}
+{gameOver && (
+  <div className="flex flex-col items-center">
+    <div className="text-red-500 text-2xl font-bold mb-4">
+      Game Over!
+    </div>
+    <button className="cursor-pointer bg-gray-300 px-4 py-2 rounded-lg text-black font-bold transition duration-100 ease-in-out hover:bg-gray-200" 
+      onClick={() => window.location.reload()}>
+      Nochmal spielen
+    </button>
+  </div>
+)}
+
       </div>
     );
     
