@@ -20,13 +20,14 @@ function WordBomb ({ words }) {
       "EN", "AN", "AR", "TT", "LA", "RE", "IN", "HT", "SE", "ER",
       "CH", "ST", "DE", "ND", "TE", "IT", "ES", "EL", "LE", "AL",
       "ME", "GE", "NE", "BE", "UN", "DA", "LI", "MA", "RA", "DI",
-      "ON", "VE", "SO", "KO", "LO", "MI", "PA", "TA", "NO", "FI",
-      "HA", "PE", "TR", "MO", "GI", "CA", "PR", "IS", "OT", "NA",
-      "DO", "LU", "CU", "RI", "GA", "KI", "TU", "BO", "SC", "GR",
-      "WI", "KR", "QU", "ZE", "FU", "BA", "KE", "BL", "PO", "VO",
-      "SN", "FL", "PH", "DA", "JO", "HU", "SP", "FA", "FR", "PL",
-      "SH", "CL", "DW", "SW", "TW", "WH", "BR", "CR", "DR", "GH",
-      "KN", "SK", "SM", "TH", "WR", "XY", "YZ", "AO", "EO", "IO"
+      "ON", "VE", "SO", "LO", "MI", "PA", "TA", "NO", "FI", "HA",
+      "PE", "TR", "MO", "GI", "CA", "PR", "IS", "OT", "NA", "DO",
+      "LU", "CU", "RI", "GA", "TU", "BO", "SC", "GR", "WI", "KR",
+      "QU", "ZE", "FU", "BA", "KE", "BL", "PO", "VO", "SN", "FL",
+      "PH", "JO", "HU", "FA", "FR", "PL", "SH", "CL", "DW", "SW",
+      "TW", "WH", "BR", "CR", "DR", "GH", "KN", "SK", "SM", "TH",
+      "WR", "SCH", "EI", "AU", "EU", "ÜB", "ÄU", "SS", "PF", "TZ",
+      "CK", "CHS", "WA", "WO", "WE", "HE", "BI", "BU", "GL", "KL"
     ];
     
     return letters[Math.floor(Math.random()*letters.length)];
