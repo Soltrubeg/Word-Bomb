@@ -117,7 +117,6 @@ for (let letter of input.split("")) {
         <div className="mb-4 w-full max-w-xs">
           <input
             autoComplete='off'
-            type="tel"
             inputMode='text'
             value={input}
             ref={inputRef}
