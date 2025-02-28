@@ -116,7 +116,9 @@ for (let letter of input.split("")) {
         {/* User Input */}
         <div className="mb-4 w-full max-w-xs">
           <input
-            type="text"
+            autoComplete='off'
+            type="tel"
+            inputMode='text'
             value={input}
             ref={inputRef}
             className="w-full p-2 border rounded-lg text-xl text-white"
@@ -128,8 +130,8 @@ for (let letter of input.split("")) {
     
         {/* Lives and Score */}
         <div className="flex justify-center space-x-12 mb-4">
-          <div className="text-xl text-white">Leben: {lives}</div>
-          <div className="text-xl text-white">Score: {score}</div>
+          <div className="text-xl text-white">Leben: <span className="text-3xl font-bold">{lives}</span></div>
+          <div className="text-xl text-white">Score: <span className="text-3xl font-bold">{score}</span></div>
         </div>
     
         {/* Display letters used below the input */}

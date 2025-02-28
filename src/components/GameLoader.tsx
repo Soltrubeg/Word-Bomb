@@ -17,7 +17,9 @@ function GameLoader() {
   }, []);
   
 
-  if (!words) return <p className="min-h-screen flex flex-col items-center justify-center px-4 text-white text-2xl">Lade Wörter...</p>;
+  if (!words) return (<div class="h-screen flex justify-center items-center">
+  <p class="text-white text-3xl mr-5">Lädt Wörter</p>
+  <div class="h-15 w-15 border-8 border-gray-300 border-t-gray-500 rounded-full animate-spin"></div></div>);
 
   return <Game words={words} />;
 }
